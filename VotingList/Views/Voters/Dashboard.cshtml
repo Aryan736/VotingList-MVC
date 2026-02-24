@@ -1,0 +1,40 @@
+﻿@model VotingList.Models.Votermod
+
+@{
+    ViewData["Title"] = "Dashboard";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<h2 class="mb-4">My Information</h2>
+
+<div class="card card-custom p-4">
+
+    <div class="row">
+        <div class="col-md-6">
+            <p><strong>Name:</strong> @Model.firstName @Model.lastName</p>
+            <p><strong>Email:</strong> @Model.email</p>
+        </div>
+
+        <div class="col-md-6">
+            <p><strong>City:</strong> @Model.city</p>
+
+            <p>
+                <strong>Status:</strong>
+
+                @if (Model.Status == VotingList.Models.Votermod.VoterStatus.Approved)
+                {
+                    <span class="badge bg-success">Approved</span>
+                }
+                else if (Model.Status == VotingList.Models.Votermod.VoterStatus.Pending)
+                {
+                    <span class="badge bg-warning text-dark">Pending</span>
+                }
+                else
+                {
+                    <span class="badge bg-danger">Rejected</span>
+                }
+            </p>
+        </div>
+    </div>
+
+</div>

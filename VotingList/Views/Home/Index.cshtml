@@ -1,0 +1,429 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>National Voter Registration Portal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --gov-blue: #0f2d52; /* Dark Navy */
+            --gov-blue-light: #1b4a82;
+            --gov-gold: #d4af37; /* Accent for official look */
+            --bg-light: #f8f9fa;
+            --text-dark: #212529;
+            --border-color: #dee2e6;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: white;
+            color: var(--text-dark);
+        }
+
+        /* --- Header & Nav --- */
+        .top-bar {
+            background-color: #f1f1f1;
+            font-size: 0.85rem;
+            padding: 5px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .navbar {
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            padding: 1rem 0;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--gov-blue);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .emblem-placeholder {
+            height: 50px;
+            width: 50px;
+            background-color: #ddd; /* Replace with actual emblem img */
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            color: #666;
+            border: 2px solid var(--gov-gold);
+        }
+
+        .nav-link {
+            color: var(--gov-blue);
+            font-weight: 600;
+            margin-left: 1rem;
+            font-size: 0.95rem;
+        }
+
+            .nav-link:hover {
+                color: var(--gov-blue-light);
+                text-decoration: underline;
+            }
+
+        .btn-login {
+            border: 2px solid var(--gov-blue);
+            color: var(--gov-blue);
+            font-weight: 600;
+        }
+
+        /* --- Hero Section --- */
+        .hero-section {
+            background-color: var(--gov-blue);
+            color: white;
+            padding: 4rem 0;
+            border-bottom: 5px solid var(--gov-gold);
+        }
+
+        .hero-title {
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .btn-hero-primary {
+            background-color: var(--gov-gold);
+            color: var(--gov-blue);
+            font-weight: 700;
+            border: none;
+            padding: 10px 25px;
+        }
+
+            .btn-hero-primary:hover {
+                background-color: #e5c150;
+                color: var(--gov-blue);
+            }
+
+        .btn-hero-outline {
+            background-color: transparent;
+            border: 2px solid white;
+            color: white;
+            font-weight: 600;
+            padding: 10px 25px;
+        }
+
+            .btn-hero-outline:hover {
+                background-color: white;
+                color: var(--gov-blue);
+            }
+
+        /* --- Services Cards --- */
+        .service-card {
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            height: 100%;
+            background: white;
+        }
+
+            .service-card:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+                border-color: var(--gov-blue);
+            }
+
+        .service-icon {
+            font-size: 2rem;
+            color: var(--gov-blue);
+            margin-bottom: 1rem;
+        }
+
+        .card-title {
+            font-weight: 600;
+            color: var(--gov-blue);
+        }
+
+
+        .step-circle {
+            width: 50px;
+            height: 50px;
+            background-color: var(--gov-blue);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin: 0 auto 10px auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .process-line {
+            position: absolute;
+            top: 25px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: #dee2e6;
+            z-index: 1;
+        }
+
+        /* --- Instructions & Footer --- */
+        .instruction-box {
+            background-color: #e9ecef;
+            border-left: 5px solid var(--gov-blue);
+            padding: 20px;
+        }
+
+        footer {
+            background-color: #1a1a1a; /* Very dark grey/black */
+            color: #ccc;
+            padding: 3rem 0 1rem 0;
+            font-size: 0.9rem;
+        }
+
+            footer h5 {
+                color: white;
+                margin-bottom: 1.5rem;
+                font-weight: 600;
+            }
+
+            footer a {
+                color: #ccc;
+                text-decoration: none;
+            }
+
+                footer a:hover {
+                    color: white;
+                    text-decoration: underline;
+                }
+
+        .footer-bottom {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #333;
+            text-align: center;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <div class="emblem-placeholder">
+                    <i class="fas fa-university"></i>
+                </div>
+                <div class="d-flex flex-column">
+                    <span class="fs-5">NATIONAL VOTER SERVICE PORTAL</span>
+                    <span class="fs-6 fw-light text-muted">Election Commission</span>
+                </div>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Forms</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Track Status</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+                    <li class="nav-item ms-2">
+                        <a asp-controller="Voters" asp-action="Login" class="btn btn-login btn-sm px-4 rounded-0">Login</a>
+                    </li> 
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero-section text-center">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <h1 class="hero-title display-4">National Voter Registration Portal</h1>
+                    <p class="lead mb-4">Democracy is better when you're part of it<br>Your vote, your way</p>
+                    <div class="d-flex gap-3 justify-content-center flex-wrap">
+                        <a asp-controller="Voters" asp-action="RegisterVoters" class="btn btn-hero-primary rounded-1">Apply for New Registration</a>
+                        <a asp-controller="Voters" asp-action="Login" class="btn btn-hero-outline rounded-1">Track Application Status</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold text-dark">Online Services</h2>
+                <div class="bg-primary mx-auto mt-2" style="width: 60px; height: 3px;"></div>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card service-card p-4 text-center">
+                        <div class="service-icon"><i class="fas fa-user-plus"></i></div>
+                        <h5 class="card-title">New Voter Registration</h5>
+                        <p class="card-text text-muted small">Fill Form 6 for inclusion of name in the electoral roll.</p>
+                        <a asp-controller="Voters" asp-action="RegisterVoters" class="btn btn-outline-primary btn-sm mt-2 stretched-link">Apply Now</a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card service-card p-4 text-center">
+                        <div class="service-icon"><i class="fas fa-search-location"></i></div>
+                        <h5 class="card-title">Track Application</h5>
+                        <p class="card-text text-muted small">Check the real-time status of your submitted application.</p>
+                        <a asp-controller="Voters" asp-action="Login" class="btn btn-outline-primary btn-sm mt-2 stretched-link">Track Now</a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card service-card p-4 text-center">
+                        <div class="service-icon"><i class="fas fa-user-tie"></i></div>
+                        <h5 class="card-title">Know Your Officer</h5>
+                        <p class="card-text text-muted small">Find contact details for your BLO, ERO, and DEO.</p>
+                        <a asp-controller="Home" asp-action="Officers" class="btn btn-outline-primary btn-sm mt-2 stretched-link">Search</a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card service-card p-4 text-center">
+                        <div class="service-icon"><i class="fas fa-file-download"></i></div>
+                        <h5 class="card-title">Download Forms</h5>
+                        <p class="card-text text-muted small">Download offline PDF forms for manual submission.</p>
+                        <a href="#" class="btn btn-outline-primary btn-sm mt-2 stretched-link">Download</a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card service-card p-4 text-center">
+                        <div class="service-icon"><i class="fas fa-edit"></i></div>
+                        <h5 class="card-title">Correction of Entries</h5>
+                        <p class="card-text text-muted small">Form 8 to update name, address, or other personal details.</p>
+                        <a href="#" class="btn btn-outline-primary btn-sm mt-2 stretched-link">Update Details</a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card service-card p-4 text-center">
+                        <div class="service-icon"><i class="fas fa-exchange-alt"></i></div>
+                        <h5 class="card-title">Transfer Registration</h5>
+                        <p class="card-text text-muted small">Shift your constituency within or outside the assembly.</p>
+                        <a href="#" class="btn btn-outline-primary btn-sm mt-2 stretched-link">Request Transfer</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5">
+        <div class="container">
+            <h2 class="fw-bold text-center mb-5">Application Workflow</h2>
+
+            <div class="row text-center position-relative">
+                <div class="process-line d-none d-md-block"></div>
+
+                <div class="col-md mx-auto mb-4 mb-md-0">
+                    <div class="step-circle">1</div>
+                    <h6 class="fw-bold mt-3">Submit Form</h6>
+                    <small class="text-muted">Online Submission</small>
+                </div>
+                <div class="col-md mx-auto mb-4 mb-md-0">
+                    <div class="step-circle">2</div>
+                    <h6 class="fw-bold mt-3">BLO Assigned</h6>
+                    <small class="text-muted">Officer Allocation</small>
+                </div>
+                <div class="col-md mx-auto mb-4 mb-md-0">
+                    <div class="step-circle">3</div>
+                    <h6 class="fw-bold mt-3">Verification</h6>
+                    <small class="text-muted">Field Visit</small>
+                </div>
+                <div class="col-md mx-auto mb-4 mb-md-0">
+                    <div class="step-circle">4</div>
+                    <h6 class="fw-bold mt-3">Approval</h6>
+                    <small class="text-muted">ERO Acceptance</small>
+                </div>
+                <div class="col-md mx-auto mb-4 mb-md-0">
+                    <div class="step-circle">5</div>
+                    <h6 class="fw-bold mt-3">EPIC Generated</h6>
+                    <small class="text-muted">Voter ID Issued</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5 bg-white border-top">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h3 class="mb-4 text-dark">Important Instructions</h3>
+                    <div class="instruction-box rounded">
+                        <ul class="list-unstyled mb-0">
+                            <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i> <strong>Age Requirement:</strong> Applicant must be 18 years or older.</li>
+                            <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i> <strong>Documents:</strong> Have a valid Proof of Address and Proof of Age (Birth Certificate, Aadhaar, etc.).</li>
+                            <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i> <strong>Photo:</strong> Recent passport-size photograph with white background.</li>
+                            <li class="mb-0"><i class="fas fa-clock text-primary me-2"></i> <strong>Processing Time:</strong> Typically 15-30 days subject to verification.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 mt-4 mt-md-0 text-center">
+                    <div class="p-5 bg-light border rounded">
+                        <h4>Need Assistance?</h4>
+                        <p class="text-muted">Contact the Voter Helpline for queries.</p>
+                        <h2 class="text-primary fw-bold"><i class="fas fa-phone-alt"></i> 1950</h2>
+                        <small>Toll-free number (24x7)</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5>About The Portal</h5>
+                    <p class="small text-white">The National Voter Service Portal is developed to provide a single window service to electors. It empowers citizens to manage their electoral details securely.</p>
+                </div>
+                <div class="col-md-2 mb-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled small">
+                        <li class="mb-2"><a href="#">Home</a></li>
+                        <li class="mb-2"><a href="#">About EC</a></li>
+                        <li class="mb-2"><a href="#">Press Releases</a></li>
+                        <li class="mb-2"><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5>Policies</h5>
+                    <ul class="list-unstyled small">
+                        <li class="mb-2"><a href="#">Privacy Policy</a></li>
+                        <li class="mb-2"><a href="#">Terms of Use</a></li>
+                        <li class="mb-2"><a href="#">Disclaimer</a></li>
+                        <li class="mb-2"><a href="#">Accessibility Statement</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5>Contact Us</h5>
+                    <p class="small text-muted">
+                        Election Commission<br>
+                        Nirvachan Sadan, Ashoka Road<br>
+                        New Delhi - 110001
+                    </p>
+                    <div class="d-flex gap-3">
+                        <a href="#"><i class="fab fa-facebook fa-lg"></i></a>
+                        <a href="#"><i class="fab fa-twitter fa-lg"></i></a>
+                        <a href="#"><i class="fab fa-youtube fa-lg"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Election Commission. All rights reserved. Designed for Public Service.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
